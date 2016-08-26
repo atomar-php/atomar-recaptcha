@@ -6,8 +6,10 @@ namespace recaptcha;
  * Implements hook_permission()
  */
 function permission() {
-    // return string array of permissions to be created
-    return array();
+    return array(
+      'administer_recaptcha',
+      'access_recaptcha'
+    );
 }
 
 function pre_process_boot() {
@@ -34,9 +36,16 @@ function menu() {
  * Implements hook_url()
  */
 function url() {
-    return array(
-        '/api/(?P<api>[a-zA-Z\_-]+)/?(\?.*)?' => 'app\controller\Api'
-    );
+    return array();
+}
+
+/**
+ * Implements hook_libraries()
+ */
+function libraries() {
+  return array(
+    '\recaptcha\RecaptchaAPI.php'
+  );
 }
 
 /**
