@@ -1,7 +1,0 @@
-{
-  "name": "recaptcha",
-  "version": "1.0.0",
-  "description": "Allows captcha forms to be easily added to a template",
-  "atomarVersion": "1.0.0",
-  "dependencies": {}
-}

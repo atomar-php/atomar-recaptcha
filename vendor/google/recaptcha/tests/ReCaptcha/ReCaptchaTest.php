@@ -35,7 +35,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
      */
     public function testExceptionThrownOnInvalidSecret($invalid)
     {
-        $rc = new RecaptchaApi($invalid);
+        $rc = new Captcha($invalid);
     }
 
     public function invalidSecretProvider()
@@ -51,7 +51,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
 
     public function testVerifyReturnsErrorOnMissingResponse()
     {
-        $rc = new RecaptchaApi('secret');
+        $rc = new Captcha('secret');
         $response = $rc->verify('');
         $this->assertFalse($response->isSuccess());
         $this->assertEquals(array('missing-input-response'), $response->getErrorCodes());
@@ -68,7 +68,7 @@ class ReCaptchaTest extends \PHPUnit_Framework_TestCase
                         }))
                 ->will($this->returnValue('{"success": true}'));
         ;
-        $rc = new RecaptchaApi('secret', $method);
+        $rc = new Captcha('secret', $method);
         $response = $rc->verify('response');
         $this->assertTrue($response->isSuccess());
     }

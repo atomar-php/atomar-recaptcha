@@ -5,14 +5,14 @@ namespace recaptcha;
 use atomar\Atomar;
 use atomar\core\Logger;
 
-class RecaptchaApi {
+class Captcha {
 
   /**
    * Generates a new recaptcha element that can be inserted into the form
    * @return string
    */
   public static function create() {
-    $site_key = variable_get('recaptcha_site_key', '');
+    $site_key = Atomar::get_variable('recaptcha_site_key', '');
 
     // validate key
     if (!$site_key || $site_key == '0') {
@@ -39,8 +39,8 @@ HTML;
    * @return bool
    */
   public static function isSuccess($remote_addr = null, $response = null) {
-    require('vendor/autoload.php');
-    $secret = variable_get('recaptcha_private_key', '');
+    require('../vendor/autoload.php');
+    $secret = Atomar::get_variable('recaptcha_private_key', '');
     if ($remote_addr == null) {
       $remote_addr = $_SERVER['REMOTE_ADDR'];
     }
@@ -58,7 +58,7 @@ HTML;
       }
       return false;
     } else {
-      $recaptcha = new \ReCaptcha\RecaptchaApi($secret);
+      $recaptcha = new \ReCaptcha\Recaptcha($secret);
       $resp = $recaptcha->verify($response, $remote_addr);
       return $resp->isSuccess();
     }

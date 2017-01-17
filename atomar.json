@@ -1,0 +1,7 @@
+{
+  "name": "recaptcha",
+  "version": "2.0.0",
+  "atomar_version": "0.2.*",
+  "description": "Allows captcha forms to be easily added to a twig template",
+  "author": "Joel Lonbeck <joel@neutrinographics.com>"
+}

@@ -75,7 +75,7 @@ elseif (isset($_POST['g-recaptcha-response'])):
     <?php
 // If the form submission includes the "g-captcha-response" field
 // Create an instance of the service using your secret
-    $recaptcha = new \ReCaptcha\RecaptchaApi($secret);
+    $recaptcha = new \ReCaptcha\Captcha($secret);
 
 // If file_get_contents() is locked down on your PHP installation to disallow
 // its use with URLs, then you can use the alternative request method instead.
